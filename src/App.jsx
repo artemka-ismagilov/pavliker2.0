@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import MenuLeft from './components/MenuLeft'
 import IncrementButton from './components/IncrementButton';
 import HandleKeyDown from './components/HandleKeyDown';
+import promoCodes from './components/promoCodes';
 import './App.css';
 
 function App() {
@@ -11,10 +10,15 @@ function App() {
   const [speedToIncrement, setSpeedToIncrement] = useState(3000);
   const [priceToUpdateSpeed, setPriceToUpdateSpeed] = useState(300);
   const [level, setLevel] = useState(1);
+  const [enterPromo, setEnterPromo] = useState();
 
   function incrementCounter() {
     setCount(prevCount => prevCount + 1);
   }
+
+  // add a promo code system
+  // the function of checking the input of the correct word
+
 
   function buyUpgrade() {
     if (count >= priceToUpdateSpeed && level < 15) {
@@ -58,6 +62,9 @@ function App() {
         buyUpgrade={buyUpgrade} 
         cheatForMe={cheatForMe} 
       />
+      <h2>Enter promocode</h2>
+      <input value={enterPromo} type="text" className='promocodeStyle' placeholder='here' />
+      <button className='checkPromoStyle' style={{ display: 'block' }}>check!</button>
     </>
   );
 }

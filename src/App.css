@@ -10,6 +10,7 @@ html, body {
   display: flex;
   flex-direction: column; /* Вертикальное расположение элементов */
   align-items: center; /* Центрируем элементы по горизонтали */
+  margin-bottom: 50px;
 }
 
 .myFuns {
@@ -44,4 +45,21 @@ h1, h2 {
   border-radius: 5px; /* Скругление углов */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Шрифт */
   font-size: 1.5rem; /* Увеличиваем размер шрифта для кнопки */
+}
+.promocodeStyle{
+  width: 190px;
+  border-radius: 7.5px;
+  border: 1px solid black;
+  height: 26px;
+  margin-bottom: 5px;
+}
+.checkPromoStyle{
+  width: 195px;
+  cursor: pointer;
+  color: rgb(220, 220, 220); /* Цвет текста кнопки */
+  background-color: #544b8b; /* Цвет фона кнопки */
+  border: none; /* Убираем границу */
+  padding: 10px 20px; /* Отступы внутри кнопки */
+  border-radius: 5px; /* Скругление углов */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Шрифт */
 }
