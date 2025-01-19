@@ -24,7 +24,6 @@ function App() {
       setLevel(prevLevel => prevLevel + 1); // Увеличиваем уровень
     }
   }
-  // @Private
   function cheatForMe(){
     setCount(66650)
   }
@@ -64,3 +63,6 @@ function App() {
 }
 
 export default App;
+
+
+// soon...
