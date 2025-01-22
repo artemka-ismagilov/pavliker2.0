@@ -12,7 +12,9 @@ html, body {
   align-items: center; /* Центрируем элементы по горизонтали */
   margin-bottom: 50px;
 }
-
+.stylingFuns{
+  margin-left: 20px;
+}
 .myFuns {
   position: absolute; /* Используем абсолютное позиционирование */
   left: 0; /* Перемещаем блок в левую часть экрана */
