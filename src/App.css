@@ -15,6 +15,25 @@ html, body {
 .stylingFuns{
   margin-left: 20px;
 }
+.upgradeBtn{
+    background-color: #46ef98;
+    font-family: Arial, sans-serif;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+.upgradeBtn:active{
+  background-color: #46ef70;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.multiClickSystem {
+  position: absolute;
+  right: 0; /* Привязка к правому краю */
+  top: 0; /* Привязка к верхнему краю */
+  padding: 10px; /* Отступы вокруг содержимого */
+  border-radius: 5px; /* Закругленные углы */
+}
 .myFuns {
   position: absolute; /* Используем абсолютное позиционирование */
   left: 0; /* Перемещаем блок в левую часть экрана */
@@ -26,7 +45,7 @@ html, body {
   margin-right: 20px; /* Отступ справа для разделения с основным контентом */
 }
 
-h1, h2 {
+h1, h2, p {
   color: rgb(220, 220, 220); /* Цвет текста заголовка */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Шрифт */
 }

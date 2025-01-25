@@ -10,7 +10,7 @@ function MenuLeft({ count, speedToIncrement, level, priceToUpdateSpeed, buyUpgra
           <h2>Needed for purchase: {level < 15 ? `$${priceToUpdateSpeed}` : "max lvl"} </h2>
         </div>
         <div>
-          <button onClick={buyUpgrade}>Upgrade</button>
+          <button className='upgradeBtn' onClick={buyUpgrade}>Upgrade</button>
           <button onClick={cheatForMe}>cash</button>
         </div>
       </div>

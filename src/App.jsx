@@ -3,11 +3,12 @@ import MenuLeft from './components/MenuLeft';
 import IncrementButton from './components/IncrementButton';
 import HandleKeyDown from './components/HandleKeyDown';
 import promoCodes, { superPromoCode } from './components/promoCodes';
+import MultiClickSystem from './components/MultiClickSystem';
 import PromoCodeChecker from './components/PromoCodeChecker';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(100);
+  const [count, setCount] = useState(1000);
   const [speedToIncrement, setSpeedToIncrement] = useState(3000);
   const [priceToUpdateSpeed, setPriceToUpdateSpeed] = useState(300);
   const [level, setLevel] = useState(1);
@@ -15,19 +16,27 @@ function App() {
   const [rewardMessage, setRewardMessage] = useState('');
   const [lastPromoTime, setLastPromoTime] = useState(0);
   const [timeUntilNextPromo, setTimeUntilNextPromo] = useState(0);
+  const [countInOneClick, setCountInOneClick]= useState(1)
 
   function incrementCounter() {
+    setCount((prevCount) => prevCount + countInOneClick);
+  }
+  function incrementCounterInterval() {
     setCount((prevCount) => prevCount + 1);
   }
 
+
   // add a promo code system - done
   // the function of checking the input of the correct word - done
-
+  // add a multi-click system for an increased cost - done
+  
   // optimize the code - almost done
   // break the App into components - almost done
 
-  // add a multi-fork system for an increased cost
-  // add a language change
+  // add a language change*
+  // add random events for a prize*
+  // add a display of the time spent after updating the page
+  // добавить казино игру, типо чтобы от неё нельзя было отказаться, за луз -деньги, за вин +деньги
 
   function buyUpgrade() {
     if (count >= priceToUpdateSpeed && level < 15) {
@@ -43,7 +52,7 @@ function App() {
   }
 
   useEffect(() => {
-    const interval = setInterval(incrementCounter, speedToIncrement);
+    const interval = setInterval(incrementCounterInterval, speedToIncrement);
     return () => clearInterval(interval);
   }, [speedToIncrement]);
 
@@ -78,6 +87,13 @@ function App() {
         priceToUpdateSpeed={priceToUpdateSpeed}
         buyUpgrade={buyUpgrade}
         cheatForMe={cheatForMe}
+      />
+      <MultiClickSystem 
+        count={count}
+        setCount={setCount}
+        countInOneClick={countInOneClick}
+        setCountInOneClick={setCountInOneClick}
+        HandleKeyDown={HandleKeyDown}
       />
       <PromoCodeChecker
         enterPromo={enterPromo}
