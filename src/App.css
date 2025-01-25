@@ -44,10 +44,29 @@ html, body {
   justify-content: flex-start; /* Выравниваем элементы по верхнему краю */
   margin-right: 20px; /* Отступ справа для разделения с основным контентом */
 }
-
+.gitHubImage{
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+}
+.tgImage{
+  height: 35px;
+  width: 57px;
+}
+.icon {
+  margin-left: 10px; /* Отступ между иконками */
+  cursor: pointer; /* Указываем, что элементы кликабельны */
+}
 h1, h2, p {
   color: rgb(220, 220, 220); /* Цвет текста заголовка */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Шрифт */
+}
+.bottomPanel {
+  position: absolute; /* Используем абсолютное позиционирование */
+  left: 30px; /* Отступ от левого края */
+  bottom: 30px; /* Отступ от нижнего края */
+  display: flex; /* Используем flexbox для горизонтального расположения */
+  align-items: center; /* Центрируем иконки по вертикали */
 }
 
 .countStyle {

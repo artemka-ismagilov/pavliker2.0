@@ -4,11 +4,12 @@ import IncrementButton from './components/IncrementButton';
 import HandleKeyDown from './components/HandleKeyDown';
 import promoCodes, { superPromoCode } from './components/promoCodes';
 import MultiClickSystem from './components/MultiClickSystem';
+import BottomPanel from './components/BottomPanel';
 import PromoCodeChecker from './components/PromoCodeChecker';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(1000);
+  const [count, setCount] = useState(100);
   const [speedToIncrement, setSpeedToIncrement] = useState(3000);
   const [priceToUpdateSpeed, setPriceToUpdateSpeed] = useState(300);
   const [level, setLevel] = useState(1);
@@ -111,6 +112,7 @@ function App() {
       {timeUntilNextPromo > 0 && (
         <p>{`Time until entry: ${timeUntilNextPromo} seconds`}</p>
       )}
+    <BottomPanel />
     </>
   );
 }
