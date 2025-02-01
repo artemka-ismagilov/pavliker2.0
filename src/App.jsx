@@ -5,11 +5,12 @@ import HandleKeyDown from './components/HandleKeyDown';
 import promoCodes, { superPromoCode } from './components/promoCodes';
 import MultiClickSystem from './components/MultiClickSystem';
 import BottomPanel from './components/BottomPanel';
+import CasinoGame from './components/CasinoGame';
 import PromoCodeChecker from './components/PromoCodeChecker';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(100);
+  const [count, setCount] = useState(990);
   const [speedToIncrement, setSpeedToIncrement] = useState(3000);
   const [priceToUpdateSpeed, setPriceToUpdateSpeed] = useState(300);
   const [level, setLevel] = useState(1);
@@ -17,27 +18,38 @@ function App() {
   const [rewardMessage, setRewardMessage] = useState('');
   const [lastPromoTime, setLastPromoTime] = useState(0);
   const [timeUntilNextPromo, setTimeUntilNextPromo] = useState(0);
-  const [countInOneClick, setCountInOneClick]= useState(1)
+  const [countInOneClick, setCountInOneClick] = useState(1);
+  const [isGameActive, setIsGameActive] = useState(false);
 
   function incrementCounter() {
     setCount((prevCount) => prevCount + countInOneClick);
   }
+
   function incrementCounterInterval() {
-    setCount((prevCount) => prevCount + 1);
+    if (!isGameActive) {
+      setCount((prevCount) => prevCount + 1);
+    }
   }
 
+  function startGame() {
+    setIsGameActive(true);
+  }
 
-  // add a promo code system - done
-  // the function of checking the input of the correct word - done
-  // add a multi-click system for an increased cost - done
-  
-  // optimize the code - almost done
-  // break the App into components - almost done
-
-  // add a language change*
-  // add random events for a prize*
-  // add a display of the time spent after updating the page
-  // добавить казино игру, типо чтобы от неё нельзя было отказаться, за луз -деньги, за вин +деньги
+  function endGame(won, number) {
+    if (won) {
+      if (number === 5) {
+        setCount((prevCount) => prevCount + 1500); // 1500 монет за число 5
+        setIsGameActive(false)
+      } else {
+        setCount((prevCount) => prevCount + 1000); // 1000 монет за любое другое выигрышное число
+        setIsGameActive(false)
+      }
+    } else {
+      setCount((prevCount) => Math.max(prevCount - 500, 0)); // Уменьшаем на 500, но не ниже 0
+      setIsGameActive(false)
+    }
+    setIsGameActive(false);
+  }
 
   function buyUpgrade() {
     if (count >= priceToUpdateSpeed && level < 15) {
@@ -55,7 +67,7 @@ function App() {
   useEffect(() => {
     const interval = setInterval(incrementCounterInterval, speedToIncrement);
     return () => clearInterval(interval);
-  }, [speedToIncrement]);
+  }, [speedToIncrement, isGameActive]);
 
   useEffect(() => {
     if (count === 66666) {
@@ -67,10 +79,17 @@ function App() {
     if (rewardMessage) {
       const timer = setTimeout(() => {
         setRewardMessage('');
-      }, 10000); 
+      }, 10000);
       return () => clearTimeout(timer);
     }
   }, [rewardMessage]);
+
+  // Запуск казино игры автоматически при достижении 1000 монет
+  useEffect(() => {
+    if (count >= 1000 && !isGameActive) {
+      setIsGameActive(true);
+    }
+  }, [count, isGameActive]);
 
   return (
     <>
@@ -96,6 +115,9 @@ function App() {
         setCountInOneClick={setCountInOneClick}
         HandleKeyDown={HandleKeyDown}
       />
+      {isGameActive && (
+        <CasinoGame endGame={endGame} />
+      )}
       <PromoCodeChecker
         enterPromo={enterPromo}
         setEnterPromo={setEnterPromo}

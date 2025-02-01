@@ -34,6 +34,19 @@ html, body {
   padding: 10px; /* Отступы вокруг содержимого */
   border-radius: 5px; /* Закругленные углы */
 }
+.btnsForGame{
+  margin-bottom: 10px;
+}
+.casinoGameStyle{
+  position: absolute;
+  margin-right: 90px;
+  right: 0;
+  /* top: 3; Привязка к верхнему краю */
+  padding: 5px; /* Отступы вокруг содержимого */
+  border-radius: 5px; /* Закругленные углы */
+  border: 1px solid gray;
+  padding-top: 0;
+}
 .myFuns {
   position: absolute; /* Используем абсолютное позиционирование */
   left: 0; /* Перемещаем блок в левую часть экрана */
@@ -57,7 +70,7 @@ html, body {
   margin-left: 10px; /* Отступ между иконками */
   cursor: pointer; /* Указываем, что элементы кликабельны */
 }
-h1, h2, p {
+h1, h2, h3,p {
   color: rgb(220, 220, 220); /* Цвет текста заголовка */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Шрифт */
 }
